@@ -1,12 +1,13 @@
 import React from "react";
-import Card from "./Card";
+import CardComponent from "./Card";
+import './Cards.css'
 
 const Cards = ({state}) => {
 
     var filterState = state
-    return <div>
+    return <div className="cards">
         {filterState.map((pokemon)=> {
-            return <Card data={pokemon}/>
+            return <CardComponent data={pokemon}/>
         })}
     </div>
 }

@@ -1,9 +1,14 @@
 import React from "react";
 import './SearchBar.css'
 
-const SearchBar = () => {
+const SearchBar = ({filter}) => {
+
+    const filterOnChange = (e) => {
+        filter(e.target.value)
+    }
+
     return <div>
-        <input type="textbox" className="searchbar" placeholder="Enter Search Term..."/>
+        <input type="textbox" className="searchbar" placeholder="Enter Search Term..." onChange={filterOnChange}/>
     </div>
 }
 

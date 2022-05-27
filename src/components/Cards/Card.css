@@ -1,0 +1,92 @@
+.card {
+    margin: 5% 0;
+}
+
+.card img {
+    width: 250px;
+    height: 250px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.pokemon_name {
+    text-transform: capitalize;
+    color: royalblue;
+    font-weight: 700;
+}
+
+.rank {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: black;
+    margin: 0%;
+}
+
+.physique {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    font-weight: 700;
+}
+
+.header {
+    font-weight: 500;
+    color: black;
+}
+
+.types {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.type {
+    padding: 0.2rem 0.4rem;
+    border-radius: 5px;
+    margin: auto;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 500;
+}
+
+.modal_pokemon_name {
+    text-align: center;
+    text-transform: uppercase;
+    color: royalblue;
+    font-weight: 700;
+}
+
+.modalRank {
+    margin: 2%;
+    font-weight: 600;
+}
+
+.modalHeader {
+    margin: 2%;
+    font-weight: 600;
+}
+
+.abilities {
+    display: flex;
+    margin: 2%;
+    font-weight: 600;
+}
+
+.ability {
+    font-weight: 100;
+    text-transform: capitalize;
+    text-align:center;
+}
+
+.pokemon-add-info {
+    display: flex;
+}
+
+.pokemon-general-info {
+    margin: 2%;
+}
+
+.pokemon-stats-info {
+    flex-wrap:nowrap;
+}

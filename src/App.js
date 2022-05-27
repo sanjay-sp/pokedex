@@ -2,17 +2,14 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import NavBar from './components/Navbar/NavBar';
 import SearchBar from './components/SearchBar/SearchBar';
-import {fetchPokemon, fetchEveryPokemon} from './api/api';
 import Cards from './components/Cards/Cards';
 
 function App() {
   const [pokemon,setPokemon] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  var filteredArray;
-
   const getResults = async () => {
-    const pokemons = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=20");
+    const pokemons = await fetch("https://pokeapi.co/api/v2/pokemon/");
     const data = await pokemons.json();
     getEveryPokemon(data.results);
   }
@@ -26,6 +23,16 @@ function App() {
   });
   }
 
+  const filterCards = (inp) => {
+    const filteredData = pokemon.filter((item)=> {
+      if(item.name.toLowerCase().includes(inp.toLowerCase())) {
+        return item
+      }
+    });
+
+    setPokemon(filteredData);
+  }
+
   useEffect(()=>{
     console.log('in use effect');
     getResults();
@@ -35,7 +42,7 @@ function App() {
     <div className="App">
       <NavBar/>
       {isLoading ? <div>Loading...</div>: <div>
-      <SearchBar/>
+      <SearchBar filter={filterCards}/>
       <Cards state={pokemon}/>
       </div>
       }
