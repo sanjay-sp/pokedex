@@ -3,9 +3,11 @@ import './App.css';
 import NavBar from './components/Navbar/NavBar';
 import SearchBar from './components/SearchBar/SearchBar';
 import Cards from './components/Cards/Cards';
+import Main from './components/Main';
 
 function App() {
   const [pokemon,setPokemon] = useState([]);
+  const [dummy,setDummy] = useState(pokemon);
   const [isLoading, setIsLoading] = useState(true);
 
   const getResults = async () => {
@@ -23,15 +25,6 @@ function App() {
   });
   }
 
-  const filterCards = (inp) => {
-    const filteredData = pokemon.filter((item)=> {
-      if(item.name.toLowerCase().includes(inp.toLowerCase())) {
-        return item
-      }
-    });
-
-    setPokemon(filteredData);
-  }
 
   useEffect(()=>{
     console.log('in use effect');
@@ -42,8 +35,7 @@ function App() {
     <div className="App">
       <NavBar/>
       {isLoading ? <div>Loading...</div>: <div>
-      <SearchBar filter={filterCards}/>
-      <Cards state={pokemon}/>
+      <Main state={pokemon}/>
       </div>
       }
     </div>
