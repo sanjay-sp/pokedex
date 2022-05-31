@@ -25,7 +25,7 @@
 
 .physique {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     color: black;
     font-weight: 700;
 }

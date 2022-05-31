@@ -4,9 +4,8 @@ import './Cards.css'
 
 const Cards = ({state}) => {
 
-    var filterState = state
     return <div className="cards">
-        {filterState.map((pokemon)=> {
+        {state.map((pokemon)=> {
             return <CardComponent data={pokemon}/>
         })}
     </div>

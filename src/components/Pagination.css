@@ -1,0 +1,23 @@
+.navigation_wrapper{
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    width: fit-content;
+  }
+
+  .pagination {
+      display: flex;
+      text-decoration: none;
+      list-style: none;
+      
+  }
+
+  .page-link {
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+
+  .page-link:hover {
+      cursor: pointer;
+  }
