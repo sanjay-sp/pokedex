@@ -23,9 +23,21 @@ option {
 
 .filterColumn {
     display:flex;
-    margin: auto;
+    margin: 2% auto;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.custom-select {
+    position: relative;
+    height: 2rem;
+    width: 7rem;
+    background-color: white;
+    border-radius: 0%;
+  }
+
+select {
+    border: 0ch;
 }
 
 /* .page-numbers {

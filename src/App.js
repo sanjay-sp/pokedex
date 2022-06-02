@@ -37,7 +37,7 @@ function App() {
   }
 
   const filterByType = (type) => {
-    if (type==='All') {
+    if (type==='ALL') {
       setCurrentPage(1)
       setPostPerPage(10);
       setData(pokemon);
@@ -72,7 +72,7 @@ function App() {
     setData(pokemon)
     setIsLoading(false);
   },[]);
-
+  console.log(pokemon);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);

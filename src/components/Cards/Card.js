@@ -25,6 +25,7 @@ const CardComponent = ({data}) => {
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
+        oveflow: 'scroll'
       };
 
     return <div className="card">
@@ -46,21 +47,27 @@ const CardComponent = ({data}) => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
           <div className="modal_pokemon_name">{data.name}</div>
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <p className="modalRank">Pokedex Entry: {data.id}</p>
-              <p className="modalHeader">Height: {data.height} m</p>
-              <p className="modalHeader">Weight: {data.weight/10} kgs</p>
+          <Typography id="modal-modal-description" sx={{ mt: 1 }}>
+                <p className="modalRank">Pokedex Entry: <span className="value">{data.id}</span></p>
+              <p className="modalHeader">Height: <span className="value">{data.height} m</span></p>
+              <p className="modalHeader">Weight: <span className="value">{data.weight/10} kgs</span></p>
               <div className="abilities">Ability: <div className="ability-column">{data.abilities.map((item)=>{
-                   return <div className="ability">{item.ability.name} </div>
+                   return <div className="ability value">{item.ability.name} </div>
             })}</div></div>
                 <div className="types">{data.types.map((item)=>{
                    return <div className="type" style={typeColor(item.type.name)}>{item.type.name}</div>
             })}</div>
+                
           </Typography>
                 </div>
-                
                 <div className="pokemon-stats-info">
                 <p className="modalHeader">Stats:</p>
+                <div>{data.stats.map((item)=>{
+                   return <div className="stats">
+                     <div className="modalHeader">{item.stat.name}:</div>
+                     <div className="stat-value">{item.base_stat}</div>
+                   </div> 
+            })}</div>
                 </div>
             </div>
             

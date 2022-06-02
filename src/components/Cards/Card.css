@@ -39,6 +39,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 4%;
 }
 
 .type {
@@ -59,18 +60,19 @@
 }
 
 .modalRank {
-    margin: 2%;
+    margin-top: 2%;
     font-weight: 600;
 }
 
 .modalHeader {
-    margin: 2%;
+    margin-top: 4%;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .abilities {
     display: flex;
-    margin: 2%;
+    margin-top: 2%;
     font-weight: 600;
 }
 
@@ -79,6 +81,7 @@
     text-transform: capitalize;
     text-align:center;
     display: block;
+    margin-left: 2%;
 }
 
 .pokemon-add-info {
@@ -91,4 +94,15 @@
 
 .pokemon-stats-info {
     flex-wrap:nowrap;
+    margin-left: 2rem;
+    padding-right: 2rem;
+}
+
+.stats {
+    margin-top: 0.8rem;
+}
+
+.value, .stat-value {
+    color: purple;
+    font-weight: 700;
 }

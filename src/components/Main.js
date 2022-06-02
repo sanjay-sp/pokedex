@@ -31,18 +31,24 @@ const Main = ({currState, data, state, paginate, postsPerPage, perPageHandler, f
         <input type="textbox" className="searchbar" placeholder="Enter Pokemon Name..." onChange={filterOnChange}/>
         {name=="" ? <div>
         <div className="filterColumn">
-            <select onChange={(e)=>filterByType(e.target.value)}>
-            <option name="All">All</option>
+            <div className="filter-by-type">
+            <span>Type: </span>
+            <select className="custom-select" onChange={(e)=>filterByType(e.target.value)}>
+            <option name="ALL">ALL</option>
             {getType().map((item)=> {
                 return <option name={item}>{item}</option>
             })}
           </select>
-            <select onChange={(e)=>perPageHandler(e.target.value)}>
+            </div>
+            <div>
+            <span>Cards per Page:   </span>
+            <select className="custom-select"  onChange={(e)=>perPageHandler(e.target.value)}>
             <option name="100" value="100">ALL</option>
             <option name="10"> 10</option>
             <option name="20">20</option>
             <option name="50">50</option>
           </select>
+            </div>
             </div>
           <div className="page-numbers">
             <Pagination postsPerPage={postsPerPage} totalPosts={data.length} paginate={paginate}/>
