@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,7 +11,7 @@ import './Card.css'
 
 const CardComponent = ({data}) => {
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
@@ -40,8 +40,8 @@ const CardComponent = ({data}) => {
                 <div className="pokemon-general-info">
                 <CardMedia
           component="img"
+          // style={{height: 250}}
           image={data.sprites.other.dream_world.front_default}
-          alt="hello"
         />
           <Typography id="modal-modal-title" variant="h6" component="h2">
           <div className="modal_pokemon_name">{data.name}</div>
@@ -50,9 +50,9 @@ const CardComponent = ({data}) => {
                 <p className="modalRank">Pokedex Entry: {data.id}</p>
               <p className="modalHeader">Height: {data.height} m</p>
               <p className="modalHeader">Weight: {data.weight/10} kgs</p>
-              <div className="abilities">Ability: {data.abilities.map((item)=>{
+              <div className="abilities">Ability: <div className="ability-column">{data.abilities.map((item)=>{
                    return <div className="ability">{item.ability.name} </div>
-            })}</div>
+            })}</div></div>
                 <div className="types">{data.types.map((item)=>{
                    return <div className="type" style={typeColor(item.type.name)}>{item.type.name}</div>
             })}</div>
@@ -60,7 +60,7 @@ const CardComponent = ({data}) => {
                 </div>
                 
                 <div className="pokemon-stats-info">
-                <p className="modalHeader">Pokemon Stats</p>
+                <p className="modalHeader">Stats:</p>
                 </div>
             </div>
             
@@ -70,7 +70,6 @@ const CardComponent = ({data}) => {
       <CardActionArea>
         <CardMedia
           component="img"
-        //   height="140"
           image={data.sprites.other.dream_world.front_default}
           alt={data.name}
         />

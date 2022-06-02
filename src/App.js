@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import NavBar from './components/Navbar/NavBar';
-import SearchBar from './components/SearchBar/SearchBar';
-import Cards from './components/Cards/Cards';
 import Main from './components/Main';
 
 function App() {
   const [pokemon,setPokemon] = useState([]);
-  const [dummy,setDummy] = useState(pokemon);
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostPerPage] = useState(10);
+  const [postsPerPage, setPostPerPage] = useState(100);
 
   const getResults = async () => {
     const pokemons = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100");
@@ -23,34 +21,73 @@ function App() {
       const rawData = await fetch(element.url);
       const individual = await rawData.json();
       setPokemon(prevState => [...prevState, individual]);
+      setData(prevState => [...prevState, individual]);
 
   });
   }
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const filterAllState = (value) => {
+    if(value=="empty") {
+      setCurrentPage(1);
+      setPostPerPage(10);
+    } else if(postsPerPage!==100) {
+      setCurrentPage(1)
+      setPostPerPage(100);
+    }
+  }
+
+  const filterByType = (type) => {
+    if (type==='All') {
+      setCurrentPage(1)
+      setPostPerPage(10);
+      setData(pokemon);
+    } else {
+      setCurrentPage(1)
+    setPostPerPage(100);
+    const filterData =[] 
+    pokemon.map((item)=>{
+         item.types.filter((data)=>{
+          if (data.type.name === type.toLowerCase()) {
+            filterData.push(item)
+          }
+        })
+    });
+    setData(filterData)
+    }
+    
+  }
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  }
 
   const perPageHandler = (number) => {
-    setPostPerPage(number)
+    setCurrentPage(1)
+    setPostPerPage(number);
   }
 
   useEffect(()=>{
     console.log('in use effect');
     getResults();
+    setData(pokemon)
     setIsLoading(false);
   },[]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = pokemon.slice(indexOfFirstPost, indexOfLastPost);
-
+  const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
   return (
     <div className="App">
       <NavBar/>
       {isLoading ? <div>Loading...</div>: <div>
-      <Main state={currentPosts} 
+      <Main currState={currentPosts}
+            data={data}
+            state={pokemon}
             paginate={paginate} 
             postsPerPage={postsPerPage}
-            perPageHandler={perPageHandler}/>
+            perPageHandler={perPageHandler}
+            filterAllState={filterAllState}
+            filterByType={filterByType}/>
       </div>
       }
     </div>

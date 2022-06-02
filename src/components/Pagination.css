@@ -1,8 +1,9 @@
 .navigation_wrapper{
-    display: flex;
+    display: block;
     justify-content: center;
     background-color: transparent;
     width: fit-content;
+    margin: auto;
   }
 
   .pagination {
